@@ -16,18 +16,18 @@ export default function Create() {
   });
   const navigate = useNavigate();
 
-  // These methods will update the state properties.
+  // desc: These methods will update the state properties.
   function updateForm(value) {
     return setForm((prev) => {
       return { ...prev, ...value };
     });
   }
 
-  // This function will handle the submission.
+  // desc: This function will handle the submission.
   async function onSubmit(e) {
     e.preventDefault();
 
-    // When a post request is sent to the create url, we'll add a new pose to the database.
+    // desc: When a post request is sent to the create url, we'll add a new pose to the database.
     const newPose = { ...form };
 
     await fetch("http://localhost:5000/pose/add", {
@@ -57,7 +57,7 @@ export default function Create() {
     navigate("/");
   }
 
-  // This following section will display the form that takes the input from the user.
+  // desc: This following section will display the form that takes the input from the user.
   return (
     <div>
       <h3>Create New Pose</h3>

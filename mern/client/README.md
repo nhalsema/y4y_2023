@@ -1,3 +1,19 @@
+# COMMENTS KEY
+This section will explain the creator's usage of comments. 
+
+## note: 
+a place where the creator had an idea they wanted to store for later while working on the codeblock. 
+
+## bug: 
+a known bug or deprecated code that needs to be updated
+
+## desc:
+a description of the function below
+
+
+
+____________________________________________________________________________________________________________________________________________________________
+# Original README
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

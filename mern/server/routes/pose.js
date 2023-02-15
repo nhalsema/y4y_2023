@@ -1,17 +1,17 @@
 const express = require("express");
 
-// poseRoutes is an instance of the express router.
-// We use it to define our routes.
-// The router will be added as a middleware and will take control of requests starting with path /pose.
+// desc: poseRoutes is an instance of the express router.
+// desc: We use it to define our routes.
+// desc: The router will be added as a middleware and will take control of requests starting with path /pose.
 const poseRoutes = express.Router();
 
-// This will connect us to the database
+// desc: This will connect us to the database
 const dbo = require("../db/conn");
 
-// This convertS the id from string to ObjectId for the _id.
+// desc: This convertS the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
 
-// This section will help you get a list of all the poses. GET ALL.
+// desc: This section will help you get a list of all the poses. GET ALL.
 poseRoutes.route("/pose").get(function (req, res) {
   let db_connect = dbo.getDb("yinPoses");
   db_connect
@@ -23,7 +23,7 @@ poseRoutes.route("/pose").get(function (req, res) {
     });
 });
 
-// This section will help you get a single pose by id. GET SINGLE.
+// desc: This section will help you get a single pose by id. GET SINGLE.
 poseRoutes.route("/pose/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId(req.params.id) };
@@ -35,7 +35,7 @@ poseRoutes.route("/pose/:id").get(function (req, res) {
     });
 });
 
-// This section will help you CREATE a new pose.
+// desc: This section will help you CREATE a new pose.
 poseRoutes.route("/pose/add").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
@@ -57,7 +57,7 @@ poseRoutes.route("/pose/add").post(function (req, response) {
   });
 });
 
-// This section will help you EDIT a pose by id.
+// desc: This section will help you EDIT a pose by id.
 poseRoutes.route("/update/:id").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId(req.params.id) };
@@ -88,7 +88,7 @@ poseRoutes.route("/update/:id").post(function (req, response) {
     });
 });
 
-// This section will help you DELETE a pose
+// desc: This section will help you DELETE a pose
 poseRoutes.route("/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId(req.params.id) };

@@ -9,9 +9,9 @@ var _db;
 
 module.exports = {
   connectToServer: function (callback) {
-    //DEPRECATED NEED TO UPDATE
+    // bug: DEPRECATED NEED TO UPDATE
     client.connect(function (err, db) {
-      // Verify we got a good "db" object
+      // desc: Verify we got a good "db" object
       if (db)
       {
         _db = db.db("yinPoses");

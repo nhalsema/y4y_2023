@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import styles from "./css/poseLists.module.css";
 
 const Pose = (props) => (
-  <tr>
-    <td>{props.pose.name}</td>
-    <td>{props.pose.desc}</td>
+  <tr className={styles.table__pose}>
+    <tr><div className={styles.tmpImg}>IMG</div></tr>
+    <tr>{props.pose.name}</tr>
+    {/* note: i'm not sure what i want to do with this  */}
+    {/* <td>{props.pose.desc}</td>
     <td>{props.pose.bilateral.toString()}</td>
     <td>{props.pose.timeMin}</td>
     <td>{props.pose.timeMax}</td>
@@ -12,34 +15,33 @@ const Pose = (props) => (
     <td>{props.pose.sortOrder}</td>
     <td>{props.pose.enter}</td>
     <td>{props.pose.exit}</td>
-    <td>{props.pose.mod}</td>
-    <td>
-     <Link className="btn btn-link" to={`/edit/${props.pose._id}`}>Edit</Link> |
-     <button className="btn btn-link"
-       onClick={() => {
-         props.deletePose(props.pose._id);
-       }}
-     >
-       Delete
-     </button>
-   </td>
+    <td>{props.pose.mod}</td> */}
+    <tr>
+      <Link className="btn btn-link" to={`/edit/${props.pose._id}`}>Edit</Link> |
+      <button className="btn btn-link"
+        onClick={() => {
+          props.deletePose(props.pose._id);
+        }}
+      >
+        Delete
+      </button>
+    </tr>
   </tr>
 );
 
 export default function PoseList() {
   const [poses, setPoses] = useState([]);
 
-  // This method fetches the poses from the database.
+  // desc: This method fetches the poses from the database.
   useEffect(() => {
     async function getPoses() {
-      const response = await fetch(`http://localhost:5000/pose/`); 
+      const response = await fetch(`http://localhost:5000/pose/`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
         window.alert(message);
         return;
       }
-
       const poses = await response.json();
       setPoses(poses);
     }
@@ -49,17 +51,17 @@ export default function PoseList() {
     return;
   }, [poses.length]);
 
-  // This method will delete a pose
-   async function deletePose(id) {
-     await fetch(`http://localhost:5000/${id}`, {
-       method: "DELETE"
-     });
+  // desc: This method will delete a pose
+  async function deletePose(id) {
+    await fetch(`http://localhost:5000/${id}`, {
+      method: "DELETE"
+    });
 
-     const newPoses = poses.filter((el) => el._id !== id);
-     setPoses(newPoses);
-   }
+    const newPoses = poses.filter((el) => el._id !== id);
+    setPoses(newPoses);
+  }
 
-  // This method will map out the poses on the table
+  // desc: This method will map out the poses on the table
   function poseList() {
     return poses.map((pose) => {
       return (
@@ -72,25 +74,18 @@ export default function PoseList() {
     });
   }
 
-  // This following section will display the table with the poses of individuals.
+  // desc: This following section will display the table with the poses of individuals.
   return (
     <div>
       <h3>POSE LIBRARY</h3>
-      {/* filter bar  */}
-      <div> yo </div>
-      <table className="table table-striped" style={{ marginTop: 20 }}>
-        <thead>
+      <table className={styles.table} style={{ marginTop: 20 }}>
+        {/* filter bar  */}
+        <thead className={styles.table__filters}>
           <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Bilateral</th>
-            <th>Time Min</th>
-            <th>Time Max</th>
-            <th>Benefit</th>
-            <th>Sort Order</th>
-            <th>Enter</th>
-            <th>Exit</th>
-            <th>Modification</th>
+            <td>filter</td>
+            <td>filter 2</td>
+            <td>filter 3</td>
+            <td>search</td>
           </tr>
         </thead>
         <tbody>{poseList()}</tbody>

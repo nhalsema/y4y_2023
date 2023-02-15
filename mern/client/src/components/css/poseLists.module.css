@@ -1,0 +1,30 @@
+.tmpImg {
+    /* div is placeholder for art */
+    height: 100px;
+    width: 100px;
+    background-color: powderblue;
+}
+
+.table {
+    /* center it */
+    margin: 0 auto;
+    /* style it */
+    border: 5px solid orchid;
+
+}
+
+.table__pose {
+    /* center it */
+    text-align: center;
+    vertical-align: middle;
+    /* style it */
+    border: 5px solid olivedrab;
+}
+
+.table__filters {
+    /* center it */
+    text-align: center;
+    vertical-align: middle;
+    /* style it */
+    color: blueviolet;
+}
