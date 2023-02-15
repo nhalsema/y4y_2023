@@ -77,7 +77,7 @@ export default function PoseList() {
     <div>
       <h3>POSE LIBRARY</h3>
       {/* filter bar  */}
-
+      <div> yo </div>
       <table className="table table-striped" style={{ marginTop: 20 }}>
         <thead>
           <tr>
